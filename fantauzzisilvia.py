@@ -2,30 +2,32 @@
     Chatbot pappagallo
 '''
 
-dialoghi = {}
+def inizializzazione():
+    global dialoghi
+    dialoghi['ciao'] = 'ciao, come stai?'
+    dialoghi['buongiorno'] = 'buongiorno a te'
 
-dialoghi['ciao'] = 'ciao, come stai?'
-dialoghi['buongiorno'] = 'buongiorno a te'
+def salva(nome_file):
+    global dialoghi
+    file = open(f'{nome_file}.yaml', 'r', encoding = 'utf-8')
+    dati = file.read()
+    file.close
+   dialoghi = load(dati)
 
-dialoghi['buonasera'] = 'buonasera, a te e famiglia'
-dialoghi['buon pomeriggio'] = 'buon pomeriggio, a te e famiglia'
-
+    if__name__=='__main__':
+        inzializzazione()
+        carica('dialoghi')
 while True:
     domanda = input('domanda ?')
     if domanda == 'fine':
         break
-    risposta = dialoghi [domanda]
+    if risposta in dialoghi:
+        risposta = dialoghi[domanda]
     print(risposta)
     else:
         print('questa è una nuova domanda')
         risposta = input('risposta ?')
         dialoghi[domanda] = risposta
-        
+        salva('dialoghi')
     
-file = open('dialoghi.yaml', 'w' encoding='utf-8'
-dati = dump(dialoghi, default_flow_style=False)
-file.write(dati)
-file.close()
-
-
 print('finito')
