@@ -12,8 +12,16 @@ def salva(nome_file):
     file.write(dati)
     file.close()
 
+def carica(nome_file):
+    global dialoghi
+    file= open (f'(nome_file).yaml', 'r' , encoding = 'utf-8')
+    dati = file.read()
+    file.close()
+    dialoghi = load(dati)
+
     if __name__== '__main__':
         Inizializzazione ()
+        carica('dialoghi')
         while True:
             domanda = input('domanda ?')
             if domanda == 'fine':
