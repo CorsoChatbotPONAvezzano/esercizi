@@ -45,12 +45,11 @@ def carica(nome_file):
     dialoghi = load(dati)
 
 if __name__ == '__main__':
-    frase_utente = input('domanda ? ')
-    parole_utente = estrai_significative(frase_utente)
-    print('parole utente:', parole_utente)
     carica('dialoghi')
     # resinserire il while del loop dell'interazione con l'utente
     # che si chiudeva con 'fine'
+    frase_utente = input('domanda ? ')
+    parole_utente = estrai_significative(frase_utente)
     for domanda in dialoghi:
         parole_domanda = estrai_significative(domanda)
         # stampare solo le parole domanda che hanno interseazione non nulla
